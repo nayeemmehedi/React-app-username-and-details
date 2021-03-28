@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Happy from './components/HAPPY/Happy';
+import Header from './components1/header/Header';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import HeaderTop from './components1/HeaderTop/HeaderTop';
+import NewHome from './components1/NewHome/NewHome';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      {/* <Happy></Happy> if else condition apply learn */}
+      <HeaderTop></HeaderTop>
+      
+
+       <Router>
+
+       <Switch>
+          <Route exact path="/home">
+            <Header></Header>
+          </Route>
+          <Route exact path="/">
+            <Header></Header>
+          </Route>
+          <Route path="/product/:id">
+            <NewHome></NewHome>
+          </Route>
+          
+        </Switch>
+      
+    </Router>
+      
     </div>
   );
 }
