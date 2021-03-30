@@ -5,30 +5,36 @@ import Lastdetails from '../Lastdetails/Lastdetails';
 const NewHome = () => {
 
 
-    const { id } = useParams();
+    const { idTeam } = useParams();
    
 
 
-    const[user1,setuser1]=useState({})
+    const[user1,setuser1]=useState([])
     
 
     useEffect(()=> {
         
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`)
         .then(response => response.json())
-        .then(json => setuser1(json))
+        .then(json => setuser1(json.teams))
 
      
 
-    },[])
+    },[idTeam])
    
 
 
     return (
         <div>
-            <h1>New Town....</h1>
         
-            <Lastdetails name={user1}  id={user1.id}></Lastdetails>
+            {
+               
+               user1.map(pd=><Lastdetails  name={pd} key={pd.idTeam}></Lastdetails>)
+
+
+            }
+        
+          
             
             
         </div>

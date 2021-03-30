@@ -1,5 +1,3 @@
-
-import Happy from './components/HAPPY/Happy';
 import Header from './components1/header/Header';
 import {
   BrowserRouter as Router,
@@ -27,7 +25,7 @@ function App() {
           <Route exact path="/">
             <Header></Header>
           </Route>
-          <Route path="/product/:id">
+          <Route path="/product/:idTeam">
             <NewHome></NewHome>
           </Route>
           

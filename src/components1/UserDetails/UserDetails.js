@@ -1,17 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const UserDetails = (props) => {
 
-    const {id,name,username} =props.name
+    const {strAlternate,idTeam,strTeamBadge} =props.name
+     
+    let history = useHistory();
+
+    function handleClick(idTeam) {
+        history.push(`/product/${idTeam}`);
+      }
+    
+
+   
 
    const stylecolor={
 
-       border:"1px solid red",
-       marginLeft:"35px",
+       border:"1px solid black",
        marginBottom:'20px',
-       width:' 60%',
-       borderRadius:'3px 3px 3px',
+       margin:'25px',
+       width:'350px',
+       backgroundColor:'white',
+       borderRadius:'23px 10px 3px',
 
    }
 
@@ -21,16 +31,35 @@ const UserDetails = (props) => {
 
            <h1> 
                
-               <Link to={"/product/" +id}>{name} </Link>
+               <Link to={"/product/" +idTeam}>{strAlternate} </Link>
                  
-                
                 
                 </h1>
             
-            <h3>UserName : {username}</h3>
-            <p>id : {id}</p>
+            <img style={{height:'270px',width:'270px'}} src={strTeamBadge} alt=""/>
+            
+            
+
+            <button type="button" class="btn btn-secondary" onClick={()=>handleClick(idTeam)}>
+      Explore+
+    </button>
+            
         </div>
     );
 };
 
 export default UserDetails;
+
+
+
+
+
+
+
+
+
+
+
+// https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=133619
+
+// team uniq key give and show details {idTeam} r
